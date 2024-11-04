@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script src="src/script.js"></script>
+    <title>Image Upload Preview</title>
+</head>
+
+<body>
+    <h2 class="menu">Places you have been</h2>
+    <div class="place">
+        <form>
+            <div class="form-input">
+                <label for="file-input">Upload Image</label>
+                <input type="file" id="file-input" accept="image/*" onchange="showPreview(event);">
+            </div>
+
+            <div class="view">
+                <img id="image-preview" alt="Image Preview" style="display: none;" />
+            </div>
+
+            <input type="text" placeholder="Location" class="form-control">
+            <input type="text" placeholder="Landmark" class="form-control">
+            <input type="date" placeholder="Date and Time" class="form-control">
+            <input type="text" placeholder="Comment" class="form-control">
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function showPreview(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const src = URL.createObjectURL(file);
+                const preview = document.getElementById("image-preview");
+                preview.src = src;
+                preview.style.display = "block"; // Show the image preview
+            }
+        }
+    </script>
+</body>
+
+</html>
